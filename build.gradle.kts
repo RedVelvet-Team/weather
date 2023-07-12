@@ -25,9 +25,22 @@ kotlin {
                 implementation(compose.desktop.currentOs)
             }
         }
+        val commonMain by getting {
+            dependencies {
+                val ktorVersion = "2.3.2"
+                implementation("io.ktor:ktor-client-java:$ktorVersion")
+                implementation("io.insert-koin:koin-core:3.4.2")
+                implementation("io.ktor:ktor-client-json:1.6.3")
+                implementation("io.ktor:ktor-client-logging:1.6.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
+                implementation ("com.google.code.gson:gson:2.10.1")
+            }
+        }
         val jvmTest by getting
+
     }
 }
+
 
 compose.desktop {
     application {
