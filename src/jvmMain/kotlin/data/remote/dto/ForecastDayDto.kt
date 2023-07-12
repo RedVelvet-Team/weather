@@ -3,6 +3,11 @@ package data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 @kotlinx.serialization.Serializable
+
+data class ForecastDto(
+    @SerializedName("forecastday")
+    val forecastDay: List<ForecastDayDto>?
+)
 data class ForecastDayDto(
     val astro: AstroDto?,
     val date: String?,
