@@ -1,6 +1,5 @@
 package domain.entity
 
-import data.remote.dto.ConditionDto
 
 data class ForecastEntity(
     val forecastDay: List<ForecastDayEntity>?
@@ -10,7 +9,7 @@ data class ForecastDayEntity(
     val date: String?,
     val dateEpoch: Int?,
     val day: DayEntity?,
-    val hour: List<HourDto>?
+    val hour: List<HourEntity>?
 )
 
 data class AstroEntity(
@@ -27,7 +26,7 @@ data class DayEntity(
     val avgtempF: Double?,
     val avgvisKm: Double?,
     val avgvisMiles: Double?,
-    val condition: ConditionDto?,
+    val condition: ConditionEntity?,
     val dailyChanceOfRain: Int?,
     val dailyChanceOfSnow: Int?,
     val dailyWillItRain: Int?,
@@ -43,11 +42,11 @@ data class DayEntity(
     val totalsnowCm: Double?,
 )
 
-data class HourDto(
+data class HourEntity(
     val chanceOfRain: Int?,
     val chanceOfSnow: Int?,
     val cloud: Int?,
-    val condition: ConditionDto?,
+    val condition: ForecastEntity?,
     val dewpointC: Double?,
     val dewpointF: Double?,
     val feelslikeC: Double?,

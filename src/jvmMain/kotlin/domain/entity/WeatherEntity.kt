@@ -5,9 +5,3 @@ data class WeatherEntity(
     val location: LocationEntity?
 )
 
-data class ConditionEntity(
-    val code: Int?,
-    val icon: String?,
-    val text: String?
-)
-
