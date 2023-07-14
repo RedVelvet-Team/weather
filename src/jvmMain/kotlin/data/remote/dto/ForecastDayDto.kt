@@ -44,7 +44,7 @@ data class DayDto(
     val avgvisKm: Double?,
     @SerializedName("avgvis_miles")
     val avgvisMiles: Double?,
-    val condition: ConditionDto?,
+    val condition: Condition?,
     @SerializedName("daily_chance_of_rain")
     val dailyChanceOfRain: Int?,
     @SerializedName("daily_chance_of_snow")
@@ -81,7 +81,7 @@ data class HourDto(
     @SerializedName("chance_of_snow")
     val chanceOfSnow: Int?,
     val cloud: Int?,
-    val condition: ConditionDto?,
+    val condition: Condition?,
     @SerializedName("dewpoint_c")
     val dewpointC: Double?,
     @SerializedName("dewpoint_f")
