@@ -1,15 +1,14 @@
-package data.remote
+package data.remote.dto
 
 
 import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
+
 data class WeatherDTO(
     @SerialName("query")
     val query: Query
 ) {
-    @Serializable
+
     data class Query(
         @SerialName("custom_id")
         val customId: String,
@@ -20,7 +19,7 @@ data class WeatherDTO(
         @SerialName("current")
         val current: Current
     ) {
-        @Serializable
+
         data class Location(
             @SerialName("name")
             val name: String,
@@ -40,7 +39,6 @@ data class WeatherDTO(
             val localtime: String
         )
 
-        @Serializable
         data class Current(
             @SerialName("last_updated_epoch")
             val lastUpdatedEpoch: Int,
@@ -89,7 +87,7 @@ data class WeatherDTO(
             @SerialName("gust_kph")
             val gustKph: Double
         ) {
-            @Serializable
+
             data class Condition(
                 @SerialName("text")
                 val text: String,

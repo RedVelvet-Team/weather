@@ -3,20 +3,20 @@ package data.remote.dto
 import com.google.gson.annotations.SerializedName
 
 
-@kotlinx.serialization.Serializable
+
 data class WeatherDto(
     val current: CurrentDto?,
     val location: LocationDto?
 )
 
-@kotlinx.serialization.Serializable
+
 data class ConditionDto(
     val code: Int?,
     val icon: String?,
     val text: String?
 )
 
-@kotlinx.serialization.Serializable
+
 data class LocationDto(
     val country: String?,
     val lat: Double?,

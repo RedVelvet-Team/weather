@@ -2,7 +2,7 @@ package data.remote.dto
 
 
 import com.google.gson.annotations.SerializedName
-@kotlinx.serialization.Serializable
+
 data class CurrentDto(
     val cloud: Int?,
     val condition: ConditionDto?,

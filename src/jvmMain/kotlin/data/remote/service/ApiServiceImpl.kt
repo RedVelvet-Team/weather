@@ -3,7 +3,7 @@ package data.remote.service
 import app.util.HttpRoute
 import data.remote.dto.ForecastDto
 import data.remote.dto.SearchDto
-import data.remote.dto.WeatherDto
+import data.remote.dto.WeatherDTO
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -14,7 +14,7 @@ class ApiServiceImpl(
     override suspend fun getCurrentWeather(
         query: String,
         getAirQuality: String?,
-    ): WeatherDto {
+    ): WeatherDTO {
         return client.get {
             url(HttpRoute.CURRENT_WEATHER)
             parameter("q", query)

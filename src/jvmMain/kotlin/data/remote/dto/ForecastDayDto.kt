@@ -2,7 +2,7 @@ package data.remote.dto
 
 
 import com.google.gson.annotations.SerializedName
-@kotlinx.serialization.Serializable
+
 
 data class ForecastDto(
     @SerializedName("forecastday")
@@ -17,7 +17,7 @@ data class ForecastDayDto(
     val hour: List<HourDto>?
 )
 
-@kotlinx.serialization.Serializable
+
 data class AstroDto(
     @SerializedName("is_moon_up")
     val isMoonUp: Int?,
@@ -33,7 +33,7 @@ data class AstroDto(
     val sunset: String?
 )
 
-@kotlinx.serialization.Serializable
+
 data class DayDto(
     val avghumidity: Double?,
     @SerializedName("avgtemp_c")
@@ -74,7 +74,7 @@ data class DayDto(
     val uv: Double?
 )
 
-@kotlinx.serialization.Serializable
+
 data class HourDto(
     @SerializedName("chance_of_rain")
     val chanceOfRain: Int?,

@@ -1,9 +1,10 @@
-package data.remote
+package data.remote.mapper
 
+import data.remote.dto.WeatherDTO
 import domain.Weather
 
-fun List<WeatherDTO>.mapToDomainModel(): List<Weather>{
-    return this.map {
+fun List<WeatherDTO>.mapToDomainModel() =
+    map {
         Weather(
             location = Weather.Location(
                 name = it.query.location.name,
@@ -37,4 +38,3 @@ fun List<WeatherDTO>.mapToDomainModel(): List<Weather>{
             )
         )
     }
-}
