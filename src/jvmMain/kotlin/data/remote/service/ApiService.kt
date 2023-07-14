@@ -2,13 +2,13 @@ package data.remote.service
 
 import data.remote.dto.ForecastDto
 import data.remote.dto.SearchDto
-import data.remote.dto.WeatherDTO
+import data.remote.dto.WeatherDto
 
 interface ApiService {
     suspend fun getCurrentWeather(
         query: String,
         getAirQuality: String?,
-    ): WeatherDTO
+    ): WeatherDto
 
     suspend fun getWeatherForecast(
         query: String,
