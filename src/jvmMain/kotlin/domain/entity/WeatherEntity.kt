@@ -1,4 +1,4 @@
-package domain.repository.entity
+package domain.entity
 
 data class WeatherEntity(
     val current: CurrentWeatherEntity?,

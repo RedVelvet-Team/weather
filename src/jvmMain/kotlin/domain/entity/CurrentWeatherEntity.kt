@@ -1,4 +1,4 @@
-package domain.repository.entity
+package domain.entity
 
 import data.remote.dto.ConditionDto
 
