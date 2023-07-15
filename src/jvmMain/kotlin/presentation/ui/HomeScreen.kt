@@ -1,4 +1,4 @@
-package presentation
+package presentation.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import presentation.composable.TitleText
 
 @Composable
 fun HomeScreen() {
@@ -48,6 +49,10 @@ fun HomeScreen() {
                         .width(1.dp),
                     color = Color(0x999FFFFFF)
                 )
+
+                Spacer(Modifier.height(24.dp))
+                TitleText("Weather Details")
+
             }
         }
     }
