@@ -16,21 +16,17 @@ class WeatherRepositoryImpl(private val apiService: ApiService) : WeatherReposit
     }
 
     override suspend fun getWeatherForecastByLocation(
-        query: String,
+        location: String,
         days: Int?,
-        getAirQuality: String?,
-        getWeatherAlerts: String?
     ): ForecastEntity {
-        TODO("Not yet implemented")
+        return apiService.getWeatherForecast(location, days).toDomain()
     }
 
     override suspend fun getWeatherForecastByName(
-        query: String,
+        cityName: String,
         days: Int?,
-        getAirQuality: String?,
-        getWeatherAlerts: String?
     ): ForecastEntity {
-        return apiService.getWeatherForecast(query, days, getAirQuality, getWeatherAlerts).toDomain()
+        return apiService.getWeatherForecast(cityName, days).toDomain()
     }
 
     override suspend fun search(query: String) {

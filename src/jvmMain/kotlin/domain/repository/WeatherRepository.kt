@@ -9,21 +9,17 @@ interface WeatherRepository {
     ): WeatherEntity
 
     suspend fun getCurrentWeatherByName(
-        cityName: String
+        cityName: String,
     ): WeatherEntity
 
     suspend fun getWeatherForecastByLocation(
-        query: String,
+        location: String,
         days: Int?,
-        getAirQuality: String?,
-        getWeatherAlerts: String?,
     ): ForecastEntity
 
     suspend fun getWeatherForecastByName(
-        query: String,
+        cityName: String,
         days: Int?,
-        getAirQuality: String?,
-        getWeatherAlerts: String?,
     ): ForecastEntity
 
     suspend fun search(query: String) //this function return Search Entity

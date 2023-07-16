@@ -17,14 +17,12 @@ class ApiServiceImpl(
 ) : ApiService {
     override suspend fun getCurrentWeather(
         query: String,
-        getAirQuality: String?,
     ): WeatherDTO {
         return wrapResponse {
             client.get {
                 url(HttpRoute.CURRENT_WEATHER)
                 parameter("key", HttpRoute.API_KEY)
                 parameter("q", query)
-                parameter("aqi", getAirQuality ?: "no")
             }
         }
     }
@@ -32,8 +30,6 @@ class ApiServiceImpl(
     override suspend fun getWeatherForecast(
         query: String,
         days: Int?,
-        getAirQuality: String?,
-        getWeatherAlerts: String?
     ): ForecastDTO {
         return wrapResponse {
             client.get {
@@ -41,8 +37,6 @@ class ApiServiceImpl(
                 parameter("key", HttpRoute.API_KEY)
                 parameter("q", query)
                 parameter("days", days ?: 1)
-                parameter("aqi", getAirQuality ?: "no")
-                parameter("alerts", getWeatherAlerts ?: "no")
             }
         }
     }

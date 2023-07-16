@@ -12,8 +12,6 @@ interface ApiService {
     suspend fun getWeatherForecast(
         query: String,
         days: Int?,
-        getAirQuality: String?,
-        getWeatherAlerts: String?,
     ): ForecastDTO
 
     suspend fun search(query: String): List<SearchDto>
