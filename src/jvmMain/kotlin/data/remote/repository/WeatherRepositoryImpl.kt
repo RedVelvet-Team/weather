@@ -28,8 +28,4 @@ class WeatherRepositoryImpl(private val apiService: ApiService) : WeatherReposit
     ): ForecastEntity {
         return apiService.getWeatherForecast(cityName, days).toDomain()
     }
-
-    override suspend fun search(query: String) {
-        apiService.search(query)
-    }
 }

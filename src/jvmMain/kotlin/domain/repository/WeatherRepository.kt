@@ -21,6 +21,4 @@ interface WeatherRepository {
         cityName: String,
         days: Int?,
     ): ForecastEntity
-
-    suspend fun search(query: String) //this function return Search Entity
 }
