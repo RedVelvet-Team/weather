@@ -11,7 +11,6 @@ data class WeatherEntity(
     val lastUpdated: String?,
     val pressureIn: Double?,
     val tempC: Double?,
-    val tempF: Double?,
     val uv: Double?,
     val visMiles: Double?,
     val windDegree: Int?,

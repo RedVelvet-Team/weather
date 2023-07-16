@@ -1,7 +1,7 @@
 package data.remote.dto.weather
 
-import data.remote.dto.CurrentDTO
-import data.remote.dto.LocationDTO
+import data.remote.dto.base.CurrentDTO
+import data.remote.dto.base.LocationDTO
 
 
 data class WeatherDTO(

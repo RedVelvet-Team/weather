@@ -9,5 +9,6 @@ data class ForecastdayDTO(
     @SerializedName("date_epoch")
     val dateEpoch: Int?,
     val day: DayDTO?,
-    val hour: List<HourDTO>?
+    @SerializedName("hour")
+    val hours: List<HourDTO>?
 )

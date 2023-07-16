@@ -1,4 +1,4 @@
-package data.remote.dto
+package data.remote.dto.search
 
 import com.google.gson.annotations.SerializedName
 

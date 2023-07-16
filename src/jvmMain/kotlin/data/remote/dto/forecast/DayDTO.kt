@@ -2,7 +2,7 @@ package data.remote.dto.forecast
 
 
 import com.google.gson.annotations.SerializedName
-import data.remote.dto.ConditionDTO
+import data.remote.dto.base.ConditionDTO
 
 data class DayDTO(
     val avghumidity: Double?,

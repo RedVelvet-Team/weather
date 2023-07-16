@@ -1,17 +1,20 @@
 package domain.repository
 
+import domain.entity.forecast.ForecastEntity
+import domain.entity.weather.WeatherEntity
+
 interface WeatherRepository {
     suspend fun getCurrentWeather(
         query: String,
         getAirQuality: String?,
-    ) //this function return Weather Entity
+    ): WeatherEntity
 
     suspend fun getWeatherForecast(
         query: String,
         days: Int?,
         getAirQuality: String?,
         getWeatherAlerts: String?,
-    ) //this function return Forecast Entity
+    ): ForecastEntity
 
     suspend fun search(query: String) //this function return Search Entity
 }

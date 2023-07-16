@@ -1,7 +1,7 @@
 package data.remote.service
 
 import app.util.HttpRoute
-import data.remote.dto.SearchDto
+import data.remote.dto.search.SearchDto
 import data.remote.dto.forecast.ForecastDTO
 import data.remote.dto.weather.WeatherDTO
 import io.ktor.client.*
