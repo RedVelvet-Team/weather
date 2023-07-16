@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class CurrentDto(
     val cloud: Int?,
-    val condition: ConditionDto?,
+    val condition: Condition?,
     @SerializedName("feelslike_c")
     val feelslikeC: Double?,
     @SerializedName("feelslike_f")

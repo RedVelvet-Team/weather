@@ -1,10 +1,9 @@
 package domain.entity
 
-import data.remote.dto.ConditionDto
 
 data class CurrentWeatherEntity(
     val cloud: Int?,
-    val condition: ConditionDto?,
+    val condition: ConditionEntity?,
     val feelslikeC: Double?,
     val feelslikeF: Double?,
     val gustKph: Double?,
