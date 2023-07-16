@@ -1,0 +1,27 @@
+package domain.entity.weather
+
+data class WeatherEntity(
+    val cloud: Int?,
+    val conditionCode: Int?,
+    val conditionIcon: String?,
+    val conditionText: String?,
+    val feelslikeC: Double?,
+    val gustKph: Double?,
+    val humidity: Int?,
+    val lastUpdated: String?,
+    val pressureIn: Double?,
+    val tempC: Double?,
+    val tempF: Double?,
+    val uv: Double?,
+    val visMiles: Double?,
+    val windDegree: Int?,
+    val windDir: String?,
+    val windKph: Double?,
+    val windMph: Double?,
+    val country: String?,
+    val lat: Double?,
+    val localtime: String?,
+    val lon: Double?,
+    val name: String?,
+    val region: String?,
+)
