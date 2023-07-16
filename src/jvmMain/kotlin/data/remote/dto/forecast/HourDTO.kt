@@ -1,11 +1,20 @@
-package data.remote.dto
+package data.remote.dto.forecast
 
 
 import com.google.gson.annotations.SerializedName
+import data.remote.dto.ConditionDTO
 
-data class CurrentDto(
+data class HourDTO(
+    @SerializedName("chance_of_rain")
+    val chanceOfRain: Int?,
+    @SerializedName("chance_of_snow")
+    val chanceOfSnow: Int?,
     val cloud: Int?,
-    val condition: ConditionDto?,
+    val condition: ConditionDTO?,
+    @SerializedName("dewpoint_c")
+    val dewpointC: Double?,
+    @SerializedName("dewpoint_f")
+    val dewpointF: Double?,
     @SerializedName("feelslike_c")
     val feelslikeC: Double?,
     @SerializedName("feelslike_f")
@@ -14,13 +23,13 @@ data class CurrentDto(
     val gustKph: Double?,
     @SerializedName("gust_mph")
     val gustMph: Double?,
+    @SerializedName("heatindex_c")
+    val heatindexC: Double?,
+    @SerializedName("heatindex_f")
+    val heatindexF: Double?,
     val humidity: Int?,
     @SerializedName("is_day")
     val isDay: Int?,
-    @SerializedName("last_updated")
-    val lastUpdated: String?,
-    @SerializedName("last_updated_epoch")
-    val lastUpdatedEpoch: Int?,
     @SerializedName("precip_in")
     val precipIn: Double?,
     @SerializedName("precip_mm")
@@ -33,11 +42,18 @@ data class CurrentDto(
     val tempC: Double?,
     @SerializedName("temp_f")
     val tempF: Double?,
+    val time: String?,
+    @SerializedName("time_epoch")
+    val timeEpoch: Int?,
     val uv: Double?,
     @SerializedName("vis_km")
     val visKm: Double?,
     @SerializedName("vis_miles")
     val visMiles: Double?,
+    @SerializedName("will_it_rain")
+    val willItRain: Int?,
+    @SerializedName("will_it_snow")
+    val willItSnow: Int?,
     @SerializedName("wind_degree")
     val windDegree: Int?,
     @SerializedName("wind_dir")
@@ -45,5 +61,9 @@ data class CurrentDto(
     @SerializedName("wind_kph")
     val windKph: Double?,
     @SerializedName("wind_mph")
-    val windMph: Double?
+    val windMph: Double?,
+    @SerializedName("windchill_c")
+    val windchillC: Double?,
+    @SerializedName("windchill_f")
+    val windchillF: Double?
 )

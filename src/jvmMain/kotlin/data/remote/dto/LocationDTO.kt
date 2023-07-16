@@ -1,23 +1,9 @@
 package data.remote.dto
 
+
 import com.google.gson.annotations.SerializedName
 
-
-
-data class WeatherDto(
-    val current: CurrentDto?,
-    val location: LocationDto?
-)
-
-
-data class ConditionDto(
-    val code: Int?,
-    val icon: String?,
-    val text: String?
-)
-
-
-data class LocationDto(
+data class LocationDTO(
     val country: String?,
     val lat: Double?,
     val localtime: String?,
