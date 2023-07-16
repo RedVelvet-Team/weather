@@ -4,12 +4,22 @@ import domain.entity.forecast.ForecastEntity
 import domain.entity.weather.WeatherEntity
 
 interface WeatherRepository {
-    suspend fun getCurrentWeather(
-        query: String,
-        getAirQuality: String?,
+    suspend fun getCurrentWeatherByLocation(
+        location: String,
     ): WeatherEntity
 
-    suspend fun getWeatherForecast(
+    suspend fun getCurrentWeatherByName(
+        cityName: String
+    ): WeatherEntity
+
+    suspend fun getWeatherForecastByLocation(
+        query: String,
+        days: Int?,
+        getAirQuality: String?,
+        getWeatherAlerts: String?,
+    ): ForecastEntity
+
+    suspend fun getWeatherForecastByName(
         query: String,
         days: Int?,
         getAirQuality: String?,

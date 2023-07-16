@@ -7,11 +7,24 @@ import domain.entity.weather.WeatherEntity
 import domain.repository.WeatherRepository
 
 class WeatherRepositoryImpl(private val apiService: ApiService) : WeatherRepository {
-    override suspend fun getCurrentWeather(query: String, getAirQuality: String?): WeatherEntity {
-        return apiService.getCurrentWeather(query, getAirQuality).toDomain()
+    override suspend fun getCurrentWeatherByLocation(location: String): WeatherEntity {
+        return apiService.getCurrentWeather(query = location).toDomain()
     }
 
-    override suspend fun getWeatherForecast(
+    override suspend fun getCurrentWeatherByName(cityName: String): WeatherEntity {
+        return apiService.getCurrentWeather(query = cityName).toDomain()
+    }
+
+    override suspend fun getWeatherForecastByLocation(
+        query: String,
+        days: Int?,
+        getAirQuality: String?,
+        getWeatherAlerts: String?
+    ): ForecastEntity {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getWeatherForecastByName(
         query: String,
         days: Int?,
         getAirQuality: String?,

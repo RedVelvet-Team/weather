@@ -7,7 +7,6 @@ import data.remote.dto.weather.WeatherDTO
 interface ApiService {
     suspend fun getCurrentWeather(
         query: String,
-        getAirQuality: String?,
     ): WeatherDTO
 
     suspend fun getWeatherForecast(

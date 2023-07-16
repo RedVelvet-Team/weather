@@ -1,9 +1,11 @@
 package domain.usecase
 
-import domain.repository.IWeatherRepository
 
-class GetWeatherByNameUseCase(private val iWeatherRepository: IWeatherRepository) {
-    suspend operator fun invoke(cityName: String){
-        return iWeatherRepository.getCurrentWeatherByName(cityName = cityName)
+import domain.entity.weather.WeatherEntity
+import domain.repository.WeatherRepository
+
+class GetWeatherByNameUseCase(private val weatherRepository: WeatherRepository) {
+    suspend operator fun invoke(cityName: String): WeatherEntity {
+        return weatherRepository.getCurrentWeatherByName(cityName = cityName)
     }
 }

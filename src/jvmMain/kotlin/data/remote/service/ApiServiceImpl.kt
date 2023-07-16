@@ -1,8 +1,8 @@
 package data.remote.service
 
 import app.util.HttpRoute
-import data.remote.dto.search.SearchDto
 import data.remote.dto.forecast.ForecastDTO
+import data.remote.dto.search.SearchDto
 import data.remote.dto.weather.WeatherDTO
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -22,6 +22,7 @@ class ApiServiceImpl(
         return wrapResponse {
             client.get {
                 url(HttpRoute.CURRENT_WEATHER)
+                parameter("key", HttpRoute.API_KEY)
                 parameter("q", query)
                 parameter("aqi", getAirQuality ?: "no")
             }
@@ -37,6 +38,7 @@ class ApiServiceImpl(
         return wrapResponse {
             client.get {
                 url(HttpRoute.FORECAST_WEATHER)
+                parameter("key", HttpRoute.API_KEY)
                 parameter("q", query)
                 parameter("days", days ?: 1)
                 parameter("aqi", getAirQuality ?: "no")
