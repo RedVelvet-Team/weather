@@ -1,11 +1,9 @@
 package app
 
 import androidx.compose.runtime.Composable
-import app.di.koinViewModel
-import presentation.screen.home.HomeViewModel
+import presentation.screen.home.HomeScreen
 
 @Composable
 fun WeatherApp() {
-    val homeViewModel : HomeViewModel= koinViewModel()
-
+    HomeScreen()
 }

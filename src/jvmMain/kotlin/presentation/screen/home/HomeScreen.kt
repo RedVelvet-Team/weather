@@ -7,6 +7,8 @@ import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
@@ -16,13 +18,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.application
+import app.di.koinViewModel
 import presentation.composable.TitleText
 
 @Composable
 fun HomeScreen(
+    viewModel: HomeViewModel = koinViewModel()
 ) {
+    val state by viewModel.state.collectAsState()
+    HomeContent(state = state)
+}
+
+@Composable
+private fun HomeContent(state: HomeUiState) {
     Box(Modifier.fillMaxSize()) {
 
         Image(
@@ -62,11 +70,5 @@ fun HomeScreen(
 
             }
         }
-    }
-}
-
-fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        HomeScreen()
     }
 }
