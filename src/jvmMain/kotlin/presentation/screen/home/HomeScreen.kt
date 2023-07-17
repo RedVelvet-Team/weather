@@ -32,10 +32,9 @@ fun HomeScreen(
 @Composable
 private fun HomeContent(state: HomeUiState) {
     Box(Modifier.fillMaxSize()) {
-
         Image(
             painter = painterResource(
-                "desktop.jpg"
+                "images/desktop.jpg"
             ), contentDescription = null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.FillBounds
         )
         Box(
@@ -52,7 +51,7 @@ private fun HomeContent(state: HomeUiState) {
                     Text(text = "Search", fontSize = 14.sp, color = Color.White, textAlign = TextAlign.Center)
                     Spacer(Modifier.width(16.dp))
                     Icon(
-                        painter = painterResource("Magnifer.svg"),
+                        painter = painterResource("icons/Magnifer.svg"),
                         contentDescription = null,
                         modifier = Modifier.size(24.dp),
                         tint = Color.White
