@@ -6,9 +6,9 @@ import domain.entity.weather.WeatherEntity
 fun WeatherDTO.toDomain() =
     WeatherEntity(
         cloud = current?.cloud,
-        conditionCode = current?.conditionDTO?.code,
-        conditionIcon = current?.conditionDTO?.icon,
-        conditionText = current?.conditionDTO?.text,
+        conditionCode = current?.condition?.code,
+        conditionIcon = current?.condition?.icon,
+        conditionText = current?.condition?.text,
         feelslikeC = current?.feelslikeC,
         gustKph = current?.gustKph,
         humidity = current?.humidity,

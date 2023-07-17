@@ -1,4 +1,4 @@
-package presentation.screen
+package presentation.screen.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,23 +21,30 @@ import androidx.compose.ui.window.application
 import presentation.composable.TitleText
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+) {
     Box(Modifier.fillMaxSize()) {
 
         Image(
             painter = painterResource(
-                "desktop.jpg"), contentDescription = null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.FillBounds
+                "desktop.jpg"
+            ), contentDescription = null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.FillBounds
         )
         Box(
             modifier = Modifier.fillMaxHeight().width(300.dp).background(Color(0x80C4C4C4))
                 .clipToBounds()
         ) {
             Column(Modifier.fillMaxSize().padding(horizontal = 40.dp)) {
-                Row(Modifier.fillMaxWidth().padding(top = 40.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.End) {
+                Row(
+                    Modifier.fillMaxWidth().padding(top = 40.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.End
+                ) {
 
-                    Text(text = "Search", fontSize =  14.sp , color = Color.White, textAlign = TextAlign.Center)
+                    Text(text = "Search", fontSize = 14.sp, color = Color.White, textAlign = TextAlign.Center)
                     Spacer(Modifier.width(16.dp))
-                    Icon(painter = painterResource("Magnifer.svg"),
+                    Icon(
+                        painter = painterResource("Magnifer.svg"),
                         contentDescription = null,
                         modifier = Modifier.size(24.dp),
                         tint = Color.White

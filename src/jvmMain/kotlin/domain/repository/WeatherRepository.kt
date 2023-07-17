@@ -1,6 +1,7 @@
 package domain.repository
 
 import domain.entity.forecast.ForecastEntity
+import domain.entity.location.Location
 import domain.entity.weather.WeatherEntity
 
 interface WeatherRepository {
@@ -21,4 +22,6 @@ interface WeatherRepository {
         cityName: String,
         days: Int?,
     ): ForecastEntity
+
+    suspend fun getLocation(): Location
 }

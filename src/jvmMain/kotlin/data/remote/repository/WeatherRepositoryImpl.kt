@@ -3,6 +3,7 @@ package data.remote.repository
 import data.remote.mapper.toDomain
 import data.remote.service.ApiService
 import domain.entity.forecast.ForecastEntity
+import domain.entity.location.Location
 import domain.entity.weather.WeatherEntity
 import domain.repository.WeatherRepository
 
@@ -27,5 +28,9 @@ class WeatherRepositoryImpl(private val apiService: ApiService) : WeatherReposit
         days: Int?,
     ): ForecastEntity {
         return apiService.getWeatherForecast(cityName, days).toDomain()
+    }
+
+    override suspend fun getLocation(): Location {
+        return apiService.getLocation()
     }
 }
