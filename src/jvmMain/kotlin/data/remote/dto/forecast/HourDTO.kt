@@ -3,6 +3,7 @@ package data.remote.dto.forecast
 
 import com.google.gson.annotations.SerializedName
 import data.remote.dto.base.ConditionDTO
+import domain.entity.forecast.HourEntity
 
 data class HourDTO(
     @SerializedName("chance_of_rain")
@@ -67,3 +68,29 @@ data class HourDTO(
     @SerializedName("windchill_f")
     val windchillF: Double?
 )
+
+fun List<HourDTO>.toDomain() =
+    map {
+        HourEntity(
+            chanceOfRain = it.chanceOfRain,
+            cloud = it.cloud,
+            conditionCode = it.condition?.code,
+            conditionIcon = it.condition?.icon,
+            conditionText = it.condition?.text,
+            dewpointC = it.dewpointC,
+            feelslikeC = it.feelslikeC,
+            gustKph = it.gustKph,
+            heatindexC = it.heatindexC,
+            humidity = it.humidity,
+            precipIn = it.precipIn,
+            pressureIn = it.pressureIn,
+            tempC = it.tempC,
+            time = it.time,
+            willItRain = it.willItRain,
+            windDegree = it.windDegree,
+            windDir = it.windDir,
+            windKph = it.windKph,
+            windMph = it.windMph,
+            windchillC = it.windchillC,
+        )
+    }

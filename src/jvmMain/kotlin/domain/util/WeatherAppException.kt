@@ -1,5 +1,7 @@
 package domain.util
 
+import java.lang.Exception
+
 sealed class WeatherAppException : Exception() {
     object UnAuthorized : WeatherAppException()
 

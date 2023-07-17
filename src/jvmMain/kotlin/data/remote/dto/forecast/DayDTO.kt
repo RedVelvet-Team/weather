@@ -3,6 +3,7 @@ package data.remote.dto.forecast
 
 import com.google.gson.annotations.SerializedName
 import data.remote.dto.base.ConditionDTO
+import domain.entity.forecast.DayEntity
 
 data class DayDTO(
     val avghumidity: Double?,
@@ -43,3 +44,18 @@ data class DayDTO(
     val totalsnowCm: Double?,
     val uv: Double?
 )
+
+fun DayDTO.toDomain() =
+    DayEntity(
+        avghumidity = avghumidity,
+        avgtempC = avgtempC,
+        conditionCode = condition?.code,
+        conditionIcon = condition?.icon,
+        conditionText = condition?.text,
+        dailyChanceOfRain = dailyChanceOfRain,
+        dailyWillItRain = dailyWillItRain,
+        maxtempC = maxtempC,
+        maxwindKph = maxwindKph,
+        mintempC = mintempC,
+        totalprecipIn = totalprecipIn,
+    )

@@ -1,16 +1,12 @@
-import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-
-@Composable
-@Preview
-fun App() {
-
-}
+import app.WeatherApp
+import app.di.initKoin
+import app.di.koin
 
 fun main() = application {
+    koin = initKoin()
     Window(onCloseRequest = ::exitApplication) {
-        App()
+        WeatherApp()
     }
 }

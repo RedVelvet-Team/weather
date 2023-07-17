@@ -2,6 +2,7 @@ package data.remote.dto.forecast
 
 
 import com.google.gson.annotations.SerializedName
+import domain.entity.forecast.AstroEntity
 
 data class AstroDTO(
     @SerializedName("is_moon_up")
@@ -17,3 +18,12 @@ data class AstroDTO(
     val sunrise: String?,
     val sunset: String?
 )
+
+fun AstroDTO.toDomain() =
+    AstroEntity(
+        moonPhase = moonPhase,
+        moonrise = moonrise,
+        moonset = moonset,
+        sunrise = sunrise,
+        sunset = sunset,
+    )
