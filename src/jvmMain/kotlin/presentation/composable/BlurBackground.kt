@@ -1,8 +1,10 @@
 package presentation.composable
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,18 +17,20 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun BlurBackground(
     modifier: Modifier = Modifier,
-    color: Color = Color(0x20454545)
+    radius: Int = 16,
 ) {
     Box(
         modifier = modifier
-            .blur(radius = 50.dp)
+            .blur(radius = radius.dp)
             .width(545.dp)
-            .height(1024.dp)
+            .fillMaxHeight()
+            .background(Color.Transparent)
     ) {
         Image(
-            painter = painterResource(resourcePath = "images/cloud_day.jpg"),
+            painter = painterResource(resourcePath = "images/desktop.jpg"),
             contentDescription = "image description",
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }

@@ -4,6 +4,7 @@ data class HomeUiState(
     val error: String? = null,
     val isLoading: Boolean = true,
     val weatherDetailsUiState: WeatherDetailsUiState = WeatherDetailsUiState(),
+    val search: String = "",
 )
 
 data class WeatherDetailsUiState(

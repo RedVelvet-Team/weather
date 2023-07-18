@@ -1,9 +1,12 @@
+@file:OptIn(FlowPreview::class)
+
 package presentation.screen.home
 
 import domain.usecase.GetCurrentLocationUseCase
 import domain.usecase.GetForecastByNameUseCase
 import domain.usecase.GetWeatherByLocationUseCase
 import domain.usecase.GetWeatherByNameUseCase
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -48,6 +51,16 @@ class HomeViewModel : BaseViewModel(), KoinComponent {
                     ),
                 )
             }
+        }
+    }
+
+
+    fun search(title: String) {
+        _state.update {
+            it.copy(
+                isLoading = false,
+                search = title
+            )
         }
     }
 

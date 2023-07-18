@@ -1,24 +1,28 @@
 package presentation.composable
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun TitleText(title: String) {
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.End) {
-        Text(
-            title,
-            fontSize = 20.sp,
-            fontWeight = FontWeight(600),
-            color = Color(0xFFFFFFFF)
+fun TitleText(
+    modifier: Modifier = Modifier,
+    title: String,
+) {
+    Text(
+        modifier = modifier,
+        text = title,
+        style = TextStyle(
+            fontSize = 24.sp,
+            fontFamily = FontFamily(Font("fonts/rubik.ttf", FontWeight(600), FontStyle.Normal)),
+            color = Color(0xFFFFFFFF),
         )
-    }
+    )
 }
