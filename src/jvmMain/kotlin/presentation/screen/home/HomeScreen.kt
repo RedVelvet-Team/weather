@@ -3,7 +3,7 @@ package presentation.screen.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
+import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -11,10 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import app.di.koinViewModel
 import presentation.composable.*
 
@@ -78,14 +75,21 @@ private fun HomeContent(
                 )
             }
         }
-        Text(
-            text = "${state.weatherDetailsUiState.tempC}" + "°",
-            style = TextStyle(
-                fontSize = 100.sp,
-                color = Color(0xFFFFFFFF),
-                textAlign = TextAlign.Center,
-            ),
-            modifier = Modifier.align(alignment = Alignment.BottomStart).padding(start = 48.dp, bottom = 100.dp)
-        )
+        Row(
+            modifier = Modifier.align(alignment = Alignment.BottomStart).padding(start = 48.dp, bottom = 100.dp),
+        ) {
+            TextTemp(temp = state.weatherDetailsUiState.tempC)
+            SpacerHorizontal(32)
+            Column {
+                TextCityName(state.weatherDetailsUiState.cityName.toString())
+                TextDate(state.weatherDetailsUiState.date.toString())
+            }
+            SpacerHorizontal(47)
+            Column {
+                Icon(painterResource("images/desktop.jpg"), contentDescription = null, modifier = Modifier.size(64.dp))
+                TextWeatherStatus(state.weatherDetailsUiState.weatherStatus.toString())
+            }
+
+        }
     }
 }

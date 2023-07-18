@@ -56,6 +56,6 @@ fun initKoin() = startKoin {
         useCaseModule,
         viewModelModule,
     )
-}.koin
+}.koin.also { koin = it }
 
 inline fun <reified T : Any> koinViewModel() = koin.get<T>()

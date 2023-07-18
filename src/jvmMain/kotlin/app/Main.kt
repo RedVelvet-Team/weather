@@ -7,7 +7,7 @@ import app.di.initKoin
 import app.di.koin
 
 fun main() = application {
-    koin = initKoin()
+    initKoin()
     val state = rememberWindowState()
     initWindow(state)
     Window(
@@ -19,6 +19,7 @@ fun main() = application {
         WeatherApp()
     }
 }
+
 
 private fun initWindow(state: WindowState) {
     state.size = DpSize(height = 970.dp, width = 1440.dp)

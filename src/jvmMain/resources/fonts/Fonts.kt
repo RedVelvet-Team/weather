@@ -6,14 +6,16 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.platform.Font
 
-val RubikBold = FontFamily(
-    Font("fonts/rubik.ttf", FontWeight(500), FontStyle.Normal)
-)
+object Fonts {
+    val RubikBold = FontFamily(
+        Font("fonts/rubik.ttf", FontWeight(500), FontStyle.Normal)
+    )
 
-val RubikSemiBold = FontFamily(
-    Font("fonts/rubik.ttf", FontWeight(400), FontStyle.Normal)
-)
+    val RubikSemiBold = FontFamily(
+        Font("fonts/rubik.ttf", FontWeight(400), FontStyle.Normal)
+    )
 
-val RubikBlack = FontFamily(
-    Font("fonts/rubik.ttf", FontWeight(600), FontStyle.Normal)
-)
+    val RubikBlack = FontFamily(
+        Font("fonts/rubik.ttf", FontWeight(600), FontStyle.Normal)
+    )
+}

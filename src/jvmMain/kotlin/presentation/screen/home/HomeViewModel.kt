@@ -33,7 +33,6 @@ class HomeViewModel : BaseViewModel(), KoinComponent {
     private fun getWeatherByLocation() {
         viewModelScope.launch {
             val weather = getWeatherByLocationUseCase(getCurrentLocationUseCase())
-            println(weather)
             _state.update {
                 it.copy(
                     isLoading = false,
