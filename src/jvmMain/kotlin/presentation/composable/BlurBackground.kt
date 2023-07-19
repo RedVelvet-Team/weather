@@ -18,17 +18,18 @@ import androidx.compose.ui.unit.dp
 fun BlurBackground(
     modifier: Modifier = Modifier,
     radius: Int = 16,
-    image: String = "",
+    width: Int = 525,
+    image: String,
 ) {
     Box(
         modifier = modifier
             .blur(radius = radius.dp)
-            .width(545.dp)
+            .width(width.dp)
             .fillMaxHeight()
             .background(Color.Transparent)
     ) {
         Image(
-            painter = painterResource(resourcePath = "images/desktop.jpg"),
+            painter = painterResource(resourcePath = image),
             contentDescription = "image description",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize(),
