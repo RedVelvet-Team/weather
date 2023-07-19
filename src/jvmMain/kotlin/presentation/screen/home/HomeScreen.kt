@@ -14,6 +14,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import app.di.koinViewModel
 import presentation.composable.*
+import presentation.ui.color.BackgroundColor
+import presentation.ui.color.White87
 
 @Composable
 fun HomeScreen(
@@ -41,7 +43,7 @@ private fun HomeContent(
                 .width(545.dp)
                 .fillMaxHeight()
                 .align(alignment = Alignment.TopEnd)
-                .background(color = Color(0x33454545))
+                .background(color = BackgroundColor)
         ) {
             Column(Modifier.fillMaxSize()) {
                 Row(
@@ -65,7 +67,7 @@ private fun HomeContent(
                         .fillMaxWidth()
                         .padding(top = 46.dp)
                         .width(1.dp),
-                    color = Color(0x999FFFFFF)
+                    color = White87
                 )
                 SpacerVertical(24)
                 TitleText(

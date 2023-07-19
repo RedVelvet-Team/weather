@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 fun BlurBackground(
     modifier: Modifier = Modifier,
     radius: Int = 16,
+    image: String = "",
 ) {
     Box(
         modifier = modifier

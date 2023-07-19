@@ -4,13 +4,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.platform.Font
 
 val RubikSemiBold = FontFamily(
-    Font("Rubik-SemiBold.ttf")
+    Font("fonts/Rubik-SemiBold.ttf")
 )
 
 val RubikMedium = FontFamily(
-    Font("Rubik-Medium.ttf")
+    Font("fonts/Rubik-Medium.ttf")
 )
 
 val RubikRegular = FontFamily(
-    Font("Rubik-Regular.ttf")
+    Font("fonts/Rubik-Regular.ttf")
 )
