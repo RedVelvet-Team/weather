@@ -73,6 +73,10 @@ private fun HomeContent(
                         .align(alignment = Alignment.Start),
                     title = "Weather Details",
                 )
+                WeatherDetails("Cloudy", state.weatherDetailsUiState.cloudy.toString())
+                WeatherDetails("Humidity", state.weatherDetailsUiState.humidity.toString())
+                WeatherDetails("Wind", state.weatherDetailsUiState.windKph.toString())
+                WeatherDetails("Pressure", state.weatherDetailsUiState.pressure.toString())
             }
         }
         Row(
@@ -89,7 +93,7 @@ private fun HomeContent(
                 Icon(painterResource("images/desktop.jpg"), contentDescription = null, modifier = Modifier.size(64.dp))
                 TextWeatherStatus(state.weatherDetailsUiState.weatherStatus.toString())
             }
-
         }
+
     }
 }

@@ -8,23 +8,23 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import presentation.ui.color.White87
-import presentation.ui.font.RubikSemiBold
+import presentation.ui.color.White60
+import presentation.ui.font.RubikMedium
 
 @Composable
-fun TitleText(
+fun BodyText(
     modifier: Modifier = Modifier,
     title: String,
-    color: Color = White87,
-    fontWeight: FontWeight = FontWeight(600),
-    fontSize: Int = 22,
+    color: Color = White60,
+    fontWeight: FontWeight = FontWeight(500),
+    fontSize: Int = 18,
 ) {
     Text(
         modifier = modifier,
         text = title,
         style = TextStyle(
             fontSize = fontSize.sp,
-            fontFamily = RubikSemiBold,
+            fontFamily = RubikMedium,
             fontStyle = FontStyle.Normal,
             fontWeight = fontWeight,
             color = color,
