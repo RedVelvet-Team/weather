@@ -2,23 +2,22 @@
 
 package presentation.screen.home
 
+import domain.entity.weather.WeatherEntity
 import domain.usecase.GetCurrentLocationUseCase
 import domain.usecase.GetForecastByNameUseCase
 import domain.usecase.GetWeatherByLocationUseCase
 import domain.usecase.GetWeatherByNameUseCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class HomeViewModel : KoinComponent {
     private val _state = MutableStateFlow(HomeUiState())
     val state = _state.asStateFlow()
+
+    private val _query = MutableStateFlow("")
+    val query = _query.asStateFlow()
 
     private val getWeatherByNameUseCase: GetWeatherByNameUseCase by inject()
     private val getWeatherByLocationUseCase: GetWeatherByLocationUseCase by inject()
@@ -30,6 +29,49 @@ class HomeViewModel : KoinComponent {
     init {
         getWeatherByLocation()
         getForecastByLocation()
+        search()
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private fun search() {
+        viewModelScope.launch {
+            query.debounce(1000).flatMapLatest { cityName ->
+                if (cityName.isBlank())
+                    flowOf(null)
+                else
+                    try {
+                        flow<WeatherEntity> {
+                            try {
+                                val weatherData = getWeatherByNameUseCase(cityName)
+                                emit(weatherData)
+                            } catch (e: Exception) {
+                                println(e.message)
+                            }
+
+                        }
+                    } catch (e: Exception) {
+                        flowOf(null)
+                    }
+            }.collectLatest { weather ->
+                _state.update {
+                    it.copy(
+                        isLoading = false,
+                        weatherDetailsUiState = WeatherDetailsUiState(
+                            tempC = weather?.tempC,
+                            cloudy = weather?.cloud,
+                            cityName = weather?.name,
+                            windKph = weather?.windKph,
+                            weatherStatus = weather?.conditionText,
+                            weatherStatusIcon = weather?.conditionIcon,
+                            weatherStatusImage = "",
+                            humidity = weather?.humidity,
+                            pressure = weather?.pressureIn,
+                            date = weather?.localtime,
+                        ),
+                    )
+                }
+            }
+        }
     }
 
     private fun getWeatherByLocation() {
@@ -56,13 +98,8 @@ class HomeViewModel : KoinComponent {
     }
 
 
-    fun search(title: String) {
-        _state.update {
-            it.copy(
-                isLoading = false,
-                search = title
-            )
-        }
+    fun setQuery(query: String) {
+        _query.value = query
     }
 
 

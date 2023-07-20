@@ -20,17 +20,19 @@ fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    val query by viewModel.query.collectAsState("")
     val listener = object : HomeListener {
         override fun onTextChanged(text: String) {
-            viewModel.search(title = text)
+            viewModel.setQuery(query = text)
         }
     }
-    HomeContent(state = state, listener = listener)
+    HomeContent(state = state, listener = listener, query = query)
 }
 
 @Composable
 private fun HomeContent(
     state: HomeUiState,
+    query: String,
     listener: HomeListener,
 ) {
     Box(Modifier.fillMaxSize()) {
@@ -66,7 +68,7 @@ private fun HomeContent(
                 ) {
                     SearchTextField(
                         modifier = Modifier.align(alignment = Alignment.CenterVertically),
-                        text = state.search,
+                        text = query,
                         onTextChange = { listener.onTextChanged(it) },
                     )
                 }
