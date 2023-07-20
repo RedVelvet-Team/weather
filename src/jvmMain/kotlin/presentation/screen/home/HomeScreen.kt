@@ -37,12 +37,12 @@ private fun HomeContent(
 ) {
     Box(Modifier.fillMaxSize()) {
         ImageBackground(
-            painter = painterResource("images/rainy_night.jpg"),
+            painter = painterResource("images/cloud_day.jpg"),
             contentDescription = "Weather status image"
         )
         BlurBackground(
             modifier = Modifier.align(alignment = Alignment.TopEnd),
-            image = "images/rainy_night.jpg",
+            image = "images/cloud_day.jpg"
         )
         Box(
             modifier = Modifier

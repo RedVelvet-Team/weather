@@ -34,7 +34,7 @@ class HomeViewModel : KoinComponent {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun search() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             query.debounce(1000).flatMapLatest { cityName ->
                 if (cityName.isBlank())
                     flowOf(null)
@@ -75,7 +75,7 @@ class HomeViewModel : KoinComponent {
     }
 
     private fun getWeatherByLocation() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val weather = getWeatherByLocationUseCase(getCurrentLocationUseCase())
             _state.update {
                 it.copy(
