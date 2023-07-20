@@ -1,5 +1,6 @@
 package presentation.screen.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
@@ -9,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import app.di.koinViewModel
@@ -35,97 +37,107 @@ private fun HomeContent(
     query: String,
     listener: HomeListener,
 ) {
-    Box(Modifier.fillMaxSize()) {
-        ImageBackground(
-            painter = painterResource("images/rainy_night.jpg"),
-            contentDescription = "Weather status image"
-        )
-        BlurBackground(
-            modifier = Modifier.align(alignment = Alignment.TopEnd),
-            image = "images/rainy_night.jpg",
-        )
-        Box(
-            modifier = Modifier
-                .width(525.dp)
-                .fillMaxHeight()
-                .align(alignment = Alignment.TopEnd)
-                .background(color = BackgroundColor)
-        ) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 24.dp),
+    if (state.isSuccess)
+        Box(Modifier.fillMaxSize()) {
+            ImageBackground(
+                painter = painterResource(state.weatherDetailsUiState.weatherStatusImage.toString()),
+                contentDescription = "Weather status image"
+            )
+            BlurBackground(
+                modifier = Modifier.align(alignment = Alignment.TopEnd),
+                image = state.weatherDetailsUiState.weatherStatusImage.toString(),
+            )
+            Box(
+                modifier = Modifier
+                    .width(525.dp)
+                    .fillMaxHeight()
+                    .align(alignment = Alignment.TopEnd)
+                    .background(color = BackgroundColor)
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(98.dp)
-                        .padding(top = 32.dp)
-                        .padding(horizontal = 40.dp)
-                        .background(Color.Transparent),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center,
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 24.dp),
                 ) {
-                    SearchTextField(
-                        modifier = Modifier.align(alignment = Alignment.CenterVertically),
-                        text = query,
-                        onTextChange = { listener.onTextChanged(it) },
-                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(98.dp)
+                            .padding(top = 32.dp)
+                            .padding(horizontal = 40.dp)
+                            .background(Color.Transparent),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center,
+                    ) {
+                        SearchTextField(
+                            modifier = Modifier.align(alignment = Alignment.CenterVertically),
+                            text = query,
+                            onTextChange = { listener.onTextChanged(it) },
+                        )
+                    }
+                    Line()
+                    SpacerVertical(32)
+                    Column {
+                        TitleText(
+                            modifier = Modifier.align(alignment = Alignment.Start).padding(bottom = 48.dp),
+                            title = "Weather Details",
+                        )
+                        WeatherDetails(
+                            "Cloudy",
+                            state.weatherDetailsUiState.cloudy.toString() + "%",
+                            modifier = Modifier.padding(bottom = 48.dp)
+                        )
+                        WeatherDetails(
+                            "Humidity", state.weatherDetailsUiState.humidity.toString() + "%",
+                            modifier = Modifier.padding(bottom = 48.dp)
+                        )
+                        WeatherDetails(
+                            "Wind", state.weatherDetailsUiState.windKph.toString() + "km/h",
+                            modifier = Modifier.padding(bottom = 48.dp)
+                        )
+                        WeatherDetails("Pressure", state.weatherDetailsUiState.pressure.toString() + "%")
+                    }
+                    Line()
                 }
-                Line()
-                SpacerVertical(32)
+            }
+            Row(
+                modifier = Modifier
+                    .align(alignment = Alignment.BottomStart)
+                    .padding(start = 48.dp, bottom = 100.dp),
+            ) {
+                TextTemp(temp = state.weatherDetailsUiState.tempC)
+                SpacerHorizontal(32)
                 Column {
                     TitleText(
-                        modifier = Modifier.align(alignment = Alignment.Start).padding(bottom = 48.dp),
-                        title = "Weather Details",
+                        title = state.weatherDetailsUiState.cityName.toString(),
+                        fontSize = 64,
                     )
-                    WeatherDetails(
-                        "Cloudy",
-                        state.weatherDetailsUiState.cloudy.toString() + "%",
-                        modifier = Modifier.padding(bottom = 48.dp)
+                    TitleText(
+                        title = state.weatherDetailsUiState.date.toString(),
+                        fontSize = 20,
                     )
-                    WeatherDetails(
-                        "Humidity", state.weatherDetailsUiState.humidity.toString() + "%",
-                        modifier = Modifier.padding(bottom = 48.dp)
-                    )
-                    WeatherDetails(
-                        "Wind", state.weatherDetailsUiState.windKph.toString() + "km/h",
-                        modifier = Modifier.padding(bottom = 48.dp)
-                    )
-                    WeatherDetails("Pressure", state.weatherDetailsUiState.pressure.toString() + "%")
                 }
-                Line()
+                SpacerHorizontal(47)
+                Column() {
+                    Icon(
+                        painterResource("icons/116.png"),
+                        contentDescription = null,
+                        modifier = Modifier.size(64.dp),
+                        tint = Color.White
+                    )
+                    BodyText(
+                        title = state.weatherDetailsUiState.weatherStatus.toString()
+                    )
+                }
             }
-        }
-        Row(
-            modifier = Modifier
-                .align(alignment = Alignment.BottomStart)
-                .padding(start = 48.dp, bottom = 100.dp),
-        ) {
-            TextTemp(temp = state.weatherDetailsUiState.tempC)
-            SpacerHorizontal(32)
-            Column {
-                TitleText(
-                    title = state.weatherDetailsUiState.cityName.toString(),
-                    fontSize = 64,
-                )
-                TitleText(
-                    title = state.weatherDetailsUiState.date.toString(),
-                    fontSize = 20,
-                )
-            }
-            SpacerHorizontal(47)
-            Column() {
-                Icon(
-                    painterResource("images/desktop.jpg"),
-                    contentDescription = null,
-                    modifier = Modifier.size(64.dp)
-                )
-                BodyText(
-                    title = state.weatherDetailsUiState.weatherStatus.toString()
-                )
-            }
-        }
 
-    }
+        }
+    else
+        Image(
+            painterResource("images/cloud_day.jpg"),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.FillBounds
+        )
+
 }

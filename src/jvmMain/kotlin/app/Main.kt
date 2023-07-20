@@ -4,7 +4,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.*
 import app.WeatherApp
 import app.di.initKoin
-import app.di.koin
 
 fun main() = application {
     initKoin()

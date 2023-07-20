@@ -45,7 +45,6 @@ class HomeViewModel : KoinComponent {
                                 val weatherData = getWeatherByNameUseCase(cityName)
                                 emit(weatherData)
                             } catch (e: Exception) {
-                                println(e.message)
                             }
 
                         }
@@ -55,18 +54,18 @@ class HomeViewModel : KoinComponent {
             }.collectLatest { weather ->
                 _state.update {
                     it.copy(
-                        isLoading = false,
+                        isSuccess = true,
                         weatherDetailsUiState = WeatherDetailsUiState(
-                            tempC = weather?.tempC,
-                            cloudy = weather?.cloud,
-                            cityName = weather?.name,
-                            windKph = weather?.windKph,
-                            weatherStatus = weather?.conditionText,
-                            weatherStatusIcon = weather?.conditionIcon,
-                            weatherStatusImage = "",
-                            humidity = weather?.humidity,
-                            pressure = weather?.pressureIn,
-                            date = weather?.localtime,
+                            tempC = weather?.tempC ?: 0.0,
+                            cloudy = weather?.cloud ?: 0,
+                            cityName = weather?.name ?: "",
+                            windKph = weather?.windKph ?: 0.0,
+                            weatherStatus = weather?.conditionText ?: "",
+                            weatherStatusIcon = weather?.conditionIcon ?: "",
+                            weatherStatusImage = "images/rainy_night.jpg",
+                            humidity = weather?.humidity ?: 0,
+                            pressure = weather?.pressureIn ?: 0.0,
+                            date = weather?.localtime ?: "",
                         ),
                     )
                 }
@@ -79,7 +78,7 @@ class HomeViewModel : KoinComponent {
             val weather = getWeatherByLocationUseCase(getCurrentLocationUseCase())
             _state.update {
                 it.copy(
-                    isLoading = false,
+                    isSuccess = true,
                     weatherDetailsUiState = WeatherDetailsUiState(
                         tempC = weather.tempC,
                         cloudy = weather.cloud,
@@ -87,7 +86,7 @@ class HomeViewModel : KoinComponent {
                         windKph = weather.windKph,
                         weatherStatus = weather.conditionText,
                         weatherStatusIcon = weather.conditionIcon,
-                        weatherStatusImage = "",
+                        weatherStatusImage = "images/rainy_night.jpg",
                         humidity = weather.humidity,
                         pressure = weather.pressureIn,
                         date = weather.localtime,

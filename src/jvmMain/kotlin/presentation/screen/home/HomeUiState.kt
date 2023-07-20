@@ -2,7 +2,7 @@ package presentation.screen.home
 
 data class HomeUiState(
     val error: String? = null,
-    val isLoading: Boolean = true,
+    val isSuccess: Boolean = false,
     val weatherDetailsUiState: WeatherDetailsUiState = WeatherDetailsUiState(),
     val search: String = "",
 )
